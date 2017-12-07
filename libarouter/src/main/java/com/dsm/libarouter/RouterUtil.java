@@ -24,9 +24,6 @@ public class RouterUtil {
      * @param deviceBongRelationList
      */
     public static String toBongScan(String account, String lockMac, Serializable deviceBongRelationList) {
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
         ARouter.getInstance().build("/bong/scan")
                 .withString("account", account)
                 .withString("lockMac", lockMac)
@@ -39,9 +36,6 @@ public class RouterUtil {
      * 跳转手环设备关联界面
      */
     public static String toBongLockRelation(Activity activity, int requestCode, String account, String linkedDeviceMac) {
-        if (activity == null) {
-            return "活动上下文不能为空";
-        }
         ARouter.getInstance().build("/bong/lockrelation")
                 .withString("account", account)
                 .withString("linkedDeviceMac", linkedDeviceMac)
@@ -56,12 +50,6 @@ public class RouterUtil {
      * @param deviceCode
      */
     public static String toBongSetting(String account, String deviceCode) {
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
-        if (TextUtils.isEmpty(deviceCode)) {
-            return "手环Mac不能为空";
-        }
         ARouter.getInstance().build("/bong/setting")
                 .withString("account", account)
                 .withString("deviceCode", deviceCode)
@@ -76,15 +64,6 @@ public class RouterUtil {
      * @param deviceCode
      */
     public static String toBongSetting(String account, String deviceCode, Activity activity, int requestCode) {
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
-        if (TextUtils.isEmpty(deviceCode)) {
-            return "手环Mac不能为空";
-        }
-        if (activity == null) {
-            return "活动上下文不能为空";
-        }
         ARouter.getInstance().build("/bong/setting")
                 .withString("account", account)
                 .withString("deviceCode", deviceCode)
@@ -98,12 +77,6 @@ public class RouterUtil {
      * @param deviceCode
      */
     public static String toBongData(String account, String deviceCode){
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
-        if (TextUtils.isEmpty(deviceCode)) {
-            return "手环Mac不能为空";
-        }
         ARouter.getInstance().build("/bong/data")
                 .withString("account", account)
                 .withString("deviceCode", deviceCode)
@@ -120,9 +93,6 @@ public class RouterUtil {
     }
 
     public static String goMainActivity(String account) {
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
         ARouter.getInstance().build("/app/main")
             .withString("account", account)
             .navigation();
@@ -130,9 +100,6 @@ public class RouterUtil {
     }
 
     public static String goMainActivity(String account, int flag) {
-        if (TextUtils.isEmpty(account)) {
-            return "账号不能为空";
-        }
         ARouter.getInstance().build("/app/main")
                 .withString("account", account)
                 .withFlags(flag)
@@ -168,9 +135,6 @@ public class RouterUtil {
      * 跳转到智能钥匙首页
      */
     public static String goSmartkeyMain(Activity activity, int requestCode, Serializable deviceLock, Serializable user) {
-        if (activity == null) {
-            return "活动上下文不能为空";
-        }
         ARouter.getInstance().build("/smartkey/main")
                 .withSerializable("deviceLock", deviceLock)
                 .withSerializable("user", user)
@@ -185,12 +149,6 @@ public class RouterUtil {
      * @return
      */
     public static String goLockSetting(String lockMac,Serializable user){
-        if(TextUtils.isEmpty(lockMac)){
-            return "Mac地址不能为空";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/lock/setting")
                 .withString("lockMac",lockMac)
                 .withSerializable("user",user)
@@ -205,12 +163,6 @@ public class RouterUtil {
      * @return
      */
     public static String goOpenPwdCheck(String lockMac, Serializable user, Activity activity,int requestCode){
-        if(TextUtils.isEmpty(lockMac)){
-            return "Mac地址不能为空";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/lock/numberpwd")
                 .withString("type","check_open_pwd")
                 .withString("lockMac",lockMac)
@@ -226,12 +178,6 @@ public class RouterUtil {
      * @return
      */
     public static String goGestureCheck(String lockMac, Serializable user, Activity activity,int requestCode){
-        if(TextUtils.isEmpty(lockMac)){
-            return "Mac地址不能为空";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/lock/gestureCheck")
                 .withString("type","gesture_check")
                 .withString("lockMac",lockMac)
@@ -241,12 +187,6 @@ public class RouterUtil {
     }
 
     public static String goLockScan(String type, Serializable user){
-        if(TextUtils.isEmpty(type)){
-            return "类型不能为空";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/lock/scan")
                 .withString("type", type)
                 .withSerializable("user",user)
@@ -255,9 +195,6 @@ public class RouterUtil {
     }
 
     public static String goWebView(String url){
-        if(TextUtils.isEmpty(url)){
-            return "链接地址错误";
-        }
         ARouter.getInstance().build("/app/content")
                 .withString("url", url)
                 .navigation();
@@ -265,12 +202,6 @@ public class RouterUtil {
     }
 
     public static String goXMVideo(String sn,String devName,Serializable user){
-        if(TextUtils.isEmpty(sn)){
-            return "设备编号错误";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/xmrobot/xmvideo")
                 .withString("sn", sn)
                 .withSerializable("user", user)
@@ -280,12 +211,6 @@ public class RouterUtil {
     }
 
     public static String goXMCheckDevPwd(Activity activity, int requestCode, String devSn, Serializable user) {
-        if(TextUtils.isEmpty(devSn)){
-            return "设备编号错误";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
         ARouter.getInstance().build("/xmrobot/check/devpwd")
             .withString("robotSN", devSn)
             .withSerializable("user", user)
@@ -294,13 +219,6 @@ public class RouterUtil {
     }
 
     public static String goXMDeviceSetting(String devSn, String devPwd, Serializable user) {
-        if(TextUtils.isEmpty(devSn)){
-            return "设备编号错误";
-        }
-        if(user==null){
-            return "用户信息错误";
-        }
-
         ARouter.getInstance().build("/xmrobot/device/setting")
             .withString("devSn", devSn)
             .withString("devPwd", devPwd)
